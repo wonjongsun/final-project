@@ -13,7 +13,7 @@ export default function Detail(props) {
         <div className="col-md-6">
           <img
             src={
-              'https://raw.githubusercontent.com/lshjju/cdn/refs/heads/main/ca-shop/s' +
+              'https://raw.githubusercontent.com/wonjongsun/final-project-resource/refs/heads/main/image/s' +
               (dataId.id + 1) +
               '.PNG'
             }
