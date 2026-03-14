@@ -1,0 +1,10 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.main-bg {
+  height: 300px;
+  background-image: url('https://raw.githubusercontent.com/lshjju/cdn/refs/heads/main/ca-shop/s-main2.PNG');
+  background-size: cover;
+  background-position: center;
+}
