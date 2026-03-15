@@ -75,7 +75,7 @@ export default function App() {
           <Route path="/company" element={<Company />}>
             <Route path="manpower" element={<Manpower />}/>
             <Route path="map"  element={<Map />}/>
-          </Route>
+          </Route> 
           <Route path="*" element={<Nopage />}
         />
       </Routes>

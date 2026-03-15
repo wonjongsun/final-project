@@ -15,7 +15,7 @@ export default function Detail(props) {
             src={'https://raw.githubusercontent.com/wonjongsun/final-project-resource/refs/heads/main/image/s' + 
             (dataId.id +1) + '.PNG'}
             width="100%"
-          />
+          /> 
         </div>
         <div className="col-md-6">
           <h4 className="pt-5">{dataId.title}</h4>
