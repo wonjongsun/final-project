@@ -71,7 +71,7 @@ export default function App() {
           </>
           }
           />          
-          <Route path="/detail" element={<Detail />}/>
+          <Route path="/detail/:id" element={<Detail shoes={shoes} />}/>
           <Route path="/company" element={<Company />}>
             <Route path="manpower" element={<Manpower />}/>
             <Route path="map"  element={<Map />}/>
