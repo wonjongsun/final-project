@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
-
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
-import data from "./data.jsx";
+import data from './data.jsx';
 import Detail from './routes/Detail';
 
 export default function App() {
@@ -38,8 +36,18 @@ export default function App() {
               <Link to="/detail" class="nav-link active" aria-current="page">
                 Detail
               </Link>
-              <Link to="/" class="nav-link active" aria-current="page">
-                about
+              <Link
+              to="/company/manpower"
+              class="nav-link active"
+              aria-current="page"
+              >
+                Manpower
+              </Link>
+              <Link
+              to="/company/map"
+              class="nav-link active"
+              aria-current="page">
+                Map
               </Link>
             </div>
           </div>
@@ -63,7 +71,13 @@ export default function App() {
           </>
           }
           />          
-          <Route path="/detail" element={<Detail/>}/>
+          <Route path="/detail" element={<Detail />}/>
+          <Route path="/company" element={<Company />}>
+            <Route path="manpower" element={<Manpower />}/>
+            <Route path="map"  element={<Map />}/>
+          </Route>
+          <Route path="*" element={<Nopage />}
+        />
       </Routes>
 
       <div class="card m-5">
@@ -98,5 +112,51 @@ function Goods(props) {
       <h4 className="my-3">{props.shoes.title}</h4>
       <p>{props.shoes.price}</p>
     </div>
+  );
+}
+
+function Company() {
+  return (
+    <div>
+      <h4>company</h4>
+      <p>It's a company</p>
+      <Outlet></Outlet>
+    </div>
+  );
+}
+
+function Manpower() {
+  return (
+    <div>
+    {' '}    
+    <img
+     src="https://plus.unsplash.com/premium_photo-1688821131205-52f5c633ce69?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+     width="80%"
+   />
+   </div>    
+  );
+}
+
+function Map() {
+  return (
+    <div>
+    <img
+      src="https://images.unsplash.com/photo-1548345680-f5475ea5df84?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      width="80%"
+    />
+  </div>
+  );
+}
+
+function Nopage() {
+  return (
+    <div>
+    <h4>No page</h4>
+    <p>hmmm....</p>
+    <img
+      src="https://cdn.maily.so/ixmvzk5qh83mee5kcjw8pp55fihe"
+      width="80%"
+    />
+  </div>
   );
 }
