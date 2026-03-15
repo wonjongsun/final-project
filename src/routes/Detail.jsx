@@ -8,7 +8,7 @@ export default function Detail() {
       <div className="row">
         <div className="col-md-6">
           <img
-            src="https://raw.githubusercontent.com/lshjju/cdn/refs/heads/main/ca-shop/s1.PNG"
+            src="https://raw.githubusercontent.com/wonjongsun/final-project-resource/refs/heads/main/image/s1.PNG"
             width="100%"
           />
         </div>
