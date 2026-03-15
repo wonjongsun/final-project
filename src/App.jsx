@@ -8,7 +8,7 @@ import { Routes, Route, Link, Outlet } from 'react-router-dom';
 import data from "./data.jsx";
 import Detail from './routes/Detail';
 
-function App() {
+export default function App() {
   let [shoes] = useState(data);
 
   return (
@@ -100,6 +100,3 @@ function Goods(props) {
     </div>
   );
 }
-
-
-export default App;
