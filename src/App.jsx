@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
@@ -7,13 +8,13 @@ import data from './data.jsx';
 import Detail from './routes/Detail';
 import Remove from './routes/Remove';
 import axios from 'axios';
+import Cart from './routes/Cart';
 
 export default function App() {
   let [shoes, setShoes] = useState(data);
 
   return (
     <div className="App">
-
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
@@ -38,6 +39,9 @@ export default function App() {
               <Link to="/detail" class="nav-link active" aria-current="page">
                 Detail
               </Link>
+              <Link to="/cart" className="nav-link active" aria-current="page">
+                Cart
+              </Link>
               <Link
                 to="/company/manpower"
                 class="nav-link active"
@@ -48,7 +52,8 @@ export default function App() {
               <Link
                 to="/company/map"
                 class="nav-link active"
-                aria-current="page">
+                aria-current="page"
+              >
                 Map
               </Link>
               <Link to="/remove" class="nav-link active" aria-current="page">
@@ -70,13 +75,15 @@ export default function App() {
 
               <div className="d-flex flex-column mb-3">
                 {shoes.map((shoe, i) => {
-                  return <Goods shoes={shoe} i={i}></Goods>
+                  return <Goods shoes={shoe} i={i}></Goods>;
                 })}
               </div>
               <button
                 onClick={() => {
                   axios
-                    .get('https://raw.githubusercontent.com/wonjongsun/final-project-resource/refs/heads/main/data/data2.json')
+                    .get(
+                      'https://raw.githubusercontent.com/lshjju/cdn/refs/heads/main/ca-shop/data2.json'
+                    )
                     .then((data2) => {
                       console.log(data2.data);
                       let copy = [...shoes, ...data2.data];
@@ -86,11 +93,14 @@ export default function App() {
                       console.log('what the...');
                     });
                 }}
-              >VIEW MORE</button>
+              >
+                VIEW MORE
+              </button>
             </>
           }
         />
         <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/company" element={<Company />}>
           <Route path="manpower" element={<Manpower />} />
           <Route path="map" element={<Map />} />
@@ -112,7 +122,6 @@ export default function App() {
           </a>
         </div>
       </div>
-
     </div>
   );
 }
@@ -122,7 +131,7 @@ function Goods(props) {
     <div className="p-2">
       <img
         src={
-          'https://raw.githubusercontent.com/wonjongsun/final-project-resource/refs/heads/main/image/s' +
+          'https://raw.githubusercontent.com/lshjju/cdn/refs/heads/main/ca-shop/s' +
           (props.i + 1) +
           '.PNG'
         }
@@ -137,7 +146,7 @@ function Goods(props) {
 function Company() {
   return (
     <div>
-      <h4>company</h4>
+      <h4 className="my-3">company</h4>
       <p>It's a company</p>
       <Outlet></Outlet>
     </div>
@@ -147,7 +156,6 @@ function Company() {
 function Manpower() {
   return (
     <div>
-      {' '}
       <img
         src="https://plus.unsplash.com/premium_photo-1688821131205-52f5c633ce69?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         width="80%"
@@ -170,7 +178,7 @@ function Map() {
 function Nopage() {
   return (
     <div>
-      <h4>No page</h4>
+      <h4 className="my-2">No page</h4>
       <p>hmmm....</p>
       <img
         src="https://cdn.maily.so/ixmvzk5qh83mee5kcjw8pp55fihe"

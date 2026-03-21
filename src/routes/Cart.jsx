@@ -1,13 +1,13 @@
-import { useSelector, useDispath } from 'react-redux';
-import { addCount } from '../store';
+import { useSelector } from "react-redux";
 
 export default function Cart() {
   let states = useSelector((state) => state);
-
-  let dispatch = useDispatch();
+  console.log(states);
+  console.log(states.users);
+  console.log(states.carts);
   return (
     <div className="container">
-      <h2 className="my-4">Yout cart</h2>
+      <h2 className="my-4">Your cart</h2>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -20,17 +20,11 @@ export default function Cart() {
         <tbody>
           {states.carts.map((item, index) => (
             <tr key={index}>
-              <th scope="row">{item.id}</th>
+              <th scope="row">{index + 1}</th>
               <td>{item.name}</td>
               <td>{item.count}</td>
               <td>
-                <button
-                  onClick={() => {
-                    dispatch(addCount(item.id));
-                  }}
-                >
-                  +
-                </button>
+                <button>+</button>
               </td>
             </tr>
           ))}
