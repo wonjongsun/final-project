@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function Remove() {
   let [modals, setModals] = useState(true);
@@ -13,7 +12,7 @@ export default function Remove() {
   }, []); //의존성 배열.
   return (
     <div className="container">
-            {modals == true ? (
+      {modals == true ? (
         <div className="bg-warning p-4">
           <h2 style={{ marginBottom: "400px" }}>
             If you want remove your account please tab button{" "}

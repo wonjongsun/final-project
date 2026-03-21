@@ -6,13 +6,14 @@ import { Routes, Route, Link, Outlet } from 'react-router-dom';
 import data from './data.jsx';
 import Detail from './routes/Detail';
 import Remove from './routes/Remove';
+import axios from 'axios';
 
 export default function App() {
-  let [shoes] = useState(data);
+  let [shoes, setShoes] = useState(data);
 
   return (
     <div className="App">
-      
+
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
@@ -38,50 +39,64 @@ export default function App() {
                 Detail
               </Link>
               <Link
-              to="/company/manpower"
-              class="nav-link active"
-              aria-current="page"
+                to="/company/manpower"
+                class="nav-link active"
+                aria-current="page"
               >
                 Manpower
               </Link>
               <Link
-              to="/company/map"
-              class="nav-link active"
-              aria-current="page">
+                to="/company/map"
+                class="nav-link active"
+                aria-current="page">
                 Map
               </Link>
               <Link to="/remove" class="nav-link active" aria-current="page">
-              account remove
+                account remove
               </Link>
             </div>
           </div>
         </div>
       </nav>
-     
+
       <Routes>
         <Route
-        path = "/"
-        element={
-          <>
-          <div className="main-bg"></div>
-          
-          <h1 className="my-5">Nike shop</h1>
+          path="/"
+          element={
+            <>
+              <div className="main-bg"></div>
 
-          <div className="d-flex flex-column mb-3">
-            {shoes.map((shoe,i) => {
-              return <Goods shoes={shoe} i={i}></Goods>
-            })}
-          </div>
-          </>
+              <h1 className="my-5">Nike shop</h1>
+
+              <div className="d-flex flex-column mb-3">
+                {shoes.map((shoe, i) => {
+                  return <Goods shoes={shoe} i={i}></Goods>
+                })}
+              </div>
+              <button
+                onClick={() => {
+                  axios
+                    .get('https://raw.githubusercontent.com/wonjongsun/final-project-resource/refs/heads/main/data/data2.json')
+                    .then((data2) => {
+                      console.log(data2.data);
+                      let copy = [...shoes, ...data2.data];
+                      setShoes(copy);
+                    })
+                    .catch(() => {
+                      console.log('what the...');
+                    });
+                }}
+              >VIEW MORE</button>
+            </>
           }
-          />          
-          <Route path="/detail/:id" element={<Detail shoes={shoes} />}/>
-          <Route path="/company" element={<Company />}>
-            <Route path="manpower" element={<Manpower />}/>
-            <Route path="map"  element={<Map />}/>
-          </Route> 
-          <Route path="*" element={<Nopage />}/>
-          <Route path="/remove" element={<Remove/>}/>
+        />
+        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+        <Route path="/company" element={<Company />}>
+          <Route path="manpower" element={<Manpower />} />
+          <Route path="map" element={<Map />} />
+        </Route>
+        <Route path="*" element={<Nopage />} />
+        <Route path="/remove" element={<Remove />} />
       </Routes>
 
       <div class="card m-5">
@@ -132,35 +147,35 @@ function Company() {
 function Manpower() {
   return (
     <div>
-    {' '}    
-    <img
-     src="https://plus.unsplash.com/premium_photo-1688821131205-52f5c633ce69?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-     width="80%"
-   />
-   </div>    
+      {' '}
+      <img
+        src="https://plus.unsplash.com/premium_photo-1688821131205-52f5c633ce69?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        width="80%"
+      />
+    </div>
   );
 }
 
 function Map() {
   return (
     <div>
-    <img
-      src="https://images.unsplash.com/photo-1548345680-f5475ea5df84?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      width="80%"
-    />
-  </div>
+      <img
+        src="https://images.unsplash.com/photo-1548345680-f5475ea5df84?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        width="80%"
+      />
+    </div>
   );
 }
 
 function Nopage() {
   return (
     <div>
-    <h4>No page</h4>
-    <p>hmmm....</p>
-    <img
-      src="https://cdn.maily.so/ixmvzk5qh83mee5kcjw8pp55fihe"
-      width="80%"
-    />
-  </div>
+      <h4>No page</h4>
+      <p>hmmm....</p>
+      <img
+        src="https://cdn.maily.so/ixmvzk5qh83mee5kcjw8pp55fihe"
+        width="80%"
+      />
+    </div>
   );
 }
