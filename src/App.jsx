@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
 import data from './data.jsx';
 import Detail from './routes/Detail';
+import Remove from './routes/Remove';
 
 export default function App() {
   let [shoes] = useState(data);
@@ -49,6 +50,9 @@ export default function App() {
               aria-current="page">
                 Map
               </Link>
+              <Link to="/remove" class="nav-link active" aria-current="page">
+              account remove
+              </Link>
             </div>
           </div>
         </div>
@@ -76,8 +80,8 @@ export default function App() {
             <Route path="manpower" element={<Manpower />}/>
             <Route path="map"  element={<Map />}/>
           </Route> 
-          <Route path="*" element={<Nopage />}
-        />
+          <Route path="*" element={<Nopage />}/>
+          <Route path="/remove" element={<Remove/>}/>
       </Routes>
 
       <div class="card m-5">
