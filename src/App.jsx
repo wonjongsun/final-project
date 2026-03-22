@@ -36,9 +36,9 @@ export default function App() {
               <Link to="/" class="nav-link active" aria-current="page">
                 Home
               </Link>
-              <Link to="/detail" class="nav-link active" aria-current="page">
+              {/* <Link to="/detail" class="nav-link active" aria-current="page">
                 Detail
-              </Link>
+              </Link> */}
               <Link to="/cart" className="nav-link active" aria-current="page">
                 Cart
               </Link>
@@ -139,6 +139,9 @@ function Goods(props) {
       />
       <h4 className="my-3">{props.shoes.title}</h4>
       <p>{props.shoes.price}</p>
+      <Link to={'/detail/'+props.shoes.id}
+      className="btn btn-secondary"
+      aria-current="page">DETAIL</Link>
     </div>
   );
 }

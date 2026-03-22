@@ -1,13 +1,15 @@
 import { useParams } from 'react-router-dom';
 import { addItem } from '../Store';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export default function Detail(props) {
+  let navigate = useNavigate(); // 컴포넌트 맨 위!
+  let dispatch = useDispatch();
+
   let { id } = useParams();
   console.log(id);
   let dataId = props.shoes.find((x) => x.id == id);
-
-  let dispatch = useDispatch();
 
   return (
     <div className="container">
@@ -26,7 +28,8 @@ export default function Detail(props) {
           <button
             className="btn btn-danger"
             onClick={() => {
-              dispatch(addItem({ id: 1, count: 1, name: 'Red Knit' }))
+              dispatch(addItem({ id: dataId.id, count: 1, name: dataId.title }));
+              navigate('/cart');
             }}
           >
             CART
