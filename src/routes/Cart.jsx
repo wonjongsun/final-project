@@ -42,6 +42,7 @@ export default function Cart() {
                       }}>+</button>
                       &nbsp;&nbsp;
                     <button
+                    style={{padding : '1px 7px 1px 7px'}}
                       onClick={() => {
                         dispatch(removeCount(item.id))
                       }}>-</button>
