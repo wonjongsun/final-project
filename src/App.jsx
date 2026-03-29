@@ -1,17 +1,18 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
 
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Routes, Route, Link, Outlet } from 'react-router-dom';
-import data from './data.jsx';
-import Detail from './routes/Detail';
-import Remove from './routes/Remove';
-import axios from 'axios';
-import Cart from './routes/Cart';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Routes, Route, Link, Outlet } from "react-router-dom";
+import data from "./data.jsx";
+import Detail from "./routes/Detail";
+import Remove from "./routes/Remove";
+import axios from "axios";
+import Cart from "./routes/Cart";
 
 export default function App() {
   let [shoes, setShoes] = useState(data);
+  let [clickCount, setClickcount] = useState(0);
 
   return (
     <div className="App">
@@ -78,24 +79,28 @@ export default function App() {
                   return <Goods shoes={shoe} i={i}></Goods>;
                 })}
               </div>
-              <button
-                onClick={() => {
-                  axios
-                    .get(
-                      'https://raw.githubusercontent.com/lshjju/cdn/refs/heads/main/ca-shop/data2.json'
-                    )
-                    .then((data2) => {
-                      console.log(data2.data);
-                      let copy = [...shoes, ...data2.data];
-                      setShoes(copy);
-                    })
-                    .catch(() => {
-                      console.log('what the...');
-                    });
-                }}
-              >
-                VIEW MORE
-              </button>
+              {clickCount === 0 ? (
+                <button
+                  onClick={() => {
+                    axios
+                      .get(
+                        "https://raw.githubusercontent.com/lshjju/cdn/refs/heads/main/ca-shop/data2.json",
+                      )
+                      .then((data2) => {
+                        console.log(data2.data);
+                        let copy = [...shoes, ...data2.data];
+                        setShoes(copy);
+                        clickCount++;
+                        setClickcount(clickCount);
+                      })
+                      .catch(() => {
+                        console.log("what the...");
+                      });
+                  }}
+                >
+                  VIEW MORE
+                </button>
+              ) : null}
             </>
           }
         />
@@ -131,17 +136,21 @@ function Goods(props) {
     <div className="p-2">
       <img
         src={
-          'https://raw.githubusercontent.com/lshjju/cdn/refs/heads/main/ca-shop/s' +
+          "https://raw.githubusercontent.com/lshjju/cdn/refs/heads/main/ca-shop/s" +
           (props.i + 1) +
-          '.PNG'
+          ".PNG"
         }
         width="80%"
       />
       <h4 className="my-3">{props.shoes.title}</h4>
       <p>{props.shoes.price}</p>
-      <Link to={'/detail/'+props.shoes.id}
-      className="btn btn-secondary"
-      aria-current="page">DETAIL</Link>
+      <Link
+        to={"/detail/" + props.shoes.id}
+        className="btn btn-secondary"
+        aria-current="page"
+      >
+        DETAIL
+      </Link>
     </div>
   );
 }
