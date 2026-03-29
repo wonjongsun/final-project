@@ -12,7 +12,7 @@ import Cart from "./routes/Cart";
 
 export default function App() {
   let [shoes, setShoes] = useState(data);
-  let [clickCount, setClickcount] = useState(0);
+  let [clickCount, setClickCount] = useState(0);
 
   return (
     <div className="App">
@@ -91,7 +91,7 @@ export default function App() {
                         let copy = [...shoes, ...data2.data];
                         setShoes(copy);
                         clickCount++;
-                        setClickcount(clickCount);
+                        setClickCount(clickCount);
                       })
                       .catch(() => {
                         console.log("what the...");
