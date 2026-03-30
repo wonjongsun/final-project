@@ -24,11 +24,11 @@ export default function Detail(props) {
         <div className="col-md-6">
           <h4 className="pt-5">{dataId.title}</h4>
           <p>{dataId.content}</p>
-          <p>{dataId.price}</p>
+          <p>{dataId.price.toLocaleString('ko-KR')}원</p>
           <button
             className="btn btn-danger"
             onClick={() => {
-              dispatch(addItem({ id: dataId.id, count: 1, name: dataId.title }));
+              dispatch(addItem({ id: dataId.id, count: 1, price: dataId.price, name: dataId.title }));
               navigate('/cart');
             }}
           >

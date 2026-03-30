@@ -84,7 +84,7 @@ export default function App() {
                   onClick={() => {
                     axios
                       .get(
-                        "https://raw.githubusercontent.com/lshjju/cdn/refs/heads/main/ca-shop/data2.json",
+                        "https://raw.githubusercontent.com/wonjongsun/final-project-resource/refs/heads/main/data/data2.json",
                       )
                       .then((data2) => {
                         console.log(data2.data);
@@ -143,7 +143,7 @@ function Goods(props) {
         width="80%"
       />
       <h4 className="my-3">{props.shoes.title}</h4>
-      <p>{props.shoes.price}</p>
+      <p>가격 : {props.shoes.price.toLocaleString('ko-KR')}원</p>
       <Link
         to={"/detail/" + props.shoes.id}
         className="btn btn-secondary"

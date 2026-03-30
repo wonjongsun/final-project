@@ -19,6 +19,7 @@ export default function Cart() {
             <th scope="col">No</th>
             <th scope="col">Title</th>
             <th scope="col">Count</th>
+            <th scope="col">Price</th>
             <th scope="col">Change</th>
             <th scope="col">Del</th>
           </tr>
@@ -26,7 +27,7 @@ export default function Cart() {
         <tbody>
           {stateCart.length === 0 ? (
             <tr>
-              <td colspan="5"> 장바구니에 담긴 상품이 없습니다.</td>
+              <td colspan="6"> 장바구니에 담긴 상품이 없습니다.</td>
             </tr>
           ) : (
             stateCart.map((item, index) => (
@@ -34,6 +35,7 @@ export default function Cart() {
                 <th scope="row">{index + 1}</th>
                 <td>{item.name}</td>
                 <td>{item.count}</td>
+                <td>{item.price.toLocaleString('ko-KR')}원</td>
                 <td>
                   <button
                     onClick={() => {
