@@ -1,18 +1,22 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function Remove() {
   let [modals, setModals] = useState(true);
+  let location =  useLocation();
+
   useEffect(() => {
+    setModals(true);
     let a = setTimeout(() => {
       setModals(false);
     }, 1000);
     return () => {
       clearTimeout(a);
     };
-  }, []); //의존성 배열.
+  }, [location.key]); // location.key가 바뀔 때마다 useEffect 실행
   return (
     <div className="container">
-      {modals == true ? (
+      {modals === true ? (
         <div className="bg-warning p-4">
           <h2 style={{ marginBottom: "400px" }}>
             If you want remove your account please tab button{" "}
