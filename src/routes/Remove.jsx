@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 export default function Remove() {
   let [modals, setModals] = useState(true);
   let location =  useLocation();
+  console.log('location',location);
 
   useEffect(() => {
     setModals(true);
