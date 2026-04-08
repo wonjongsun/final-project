@@ -82,6 +82,16 @@ export default function Cart() {
           </tr>
         </tbody>
       </table>
+      <div className="text-end my-4">
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            alert("주문이 완료되었습니다.");
+          }}
+        >
+          주문하기
+        </button>
+      </div>
     </div>
   );
 }
