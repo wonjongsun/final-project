@@ -1,12 +1,14 @@
 import { useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addCount, removeCount, removeItem } from "../Store";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   let states = useSelector((state) => state);
   // console.log(states);
   // console.log(states.users);
   // console.log(states.carts);
+  let navigate = useNavigate();
   let dispatch = useDispatch();
 
   let stateCart = states.carts;
@@ -66,27 +68,28 @@ export default function Cart() {
                 <td>
                   <button
                     onClick={() => {
-                      dispatch(removeItem(item.id));
-                    }}
-                  >
-                    Del
-                  </button>
-                </td>
-              </tr>
-            ))
-          )}
-          <tr>
-            <td colspan="7" style={{ textAlign: "right" }}>
-              총합계 : {total.toLocaleString("ko-KR")}원
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div className="text-end my-4">
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            alert("주문이 완료되었습니다.");
+                        dispatch(removeItem(item.id));
+                      }}
+                      >
+                      Del
+                      </button>
+                    </td>
+                    </tr>
+                  ))
+                  )}
+                  <tr>
+                  <td colspan="7" style={{ textAlign: "right" }}>
+                    총합계 : {total.toLocaleString("ko-KR")}원
+                  </td>
+                  </tr>
+                </tbody>
+                </table>
+                <div className="text-end my-4">
+                <button
+                  className="btn"
+                  style={{ backgroundColor: 'red', color: 'white' }}
+                  onClick={() => {
+            navigate('/order');
           }}
         >
           주문하기

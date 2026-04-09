@@ -9,6 +9,7 @@ import Detail from "./routes/Detail";
 import Remove from "./routes/Remove";
 import axios from "axios";
 import Cart from "./routes/Cart";
+import Order from "./routes/Order";
 
 export default function App() {
   let [shoes, setShoes] = useState(data);
@@ -106,6 +107,7 @@ export default function App() {
         />
         <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/order" element={<Order />} />
         <Route path="/company" element={<Company />}>
           <Route path="manpower" element={<Manpower />} />
           <Route path="map" element={<Map />} />
