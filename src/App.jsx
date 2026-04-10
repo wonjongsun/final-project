@@ -10,6 +10,9 @@ import Remove from "./routes/Remove";
 import axios from "axios";
 import Cart from "./routes/Cart";
 import Order from "./routes/Order";
+import MyPage from "./routes/Mypage";
+import OrderHistory from "./routes/OrderHistory.jsx";
+import EditProfile from "./routes/EditProfile.jsx";
 
 export default function App() {
   let [shoes, setShoes] = useState(data);
@@ -43,6 +46,9 @@ export default function App() {
               </Link> */}
               <Link to="/cart" className="nav-link active" aria-current="page">
                 Cart
+              </Link>
+              <Link to="/mypage" className="nav-link active" aria-current="page">
+                Mypage
               </Link>
               <Link
                 to="/company/manpower"
@@ -108,6 +114,9 @@ export default function App() {
         <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/orderHistory" element={<OrderHistory />} />
+        <Route path="/editProfile" element={<EditProfile />} />
         <Route path="/company" element={<Company />}>
           <Route path="manpower" element={<Manpower />} />
           <Route path="map" element={<Map />} />

@@ -61,7 +61,7 @@ export default function Order() {
               className="btn btn-primary btn-lg w-100" 
               onClick={() => {
                 alert('주문이 완료되었습니다.');
-                navigate('/');
+                navigate('/orderHistory');
               }}
             >
               결제하기
