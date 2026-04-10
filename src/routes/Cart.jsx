@@ -68,28 +68,28 @@ export default function Cart() {
                 <td>
                   <button
                     onClick={() => {
-                        dispatch(removeItem(item.id));
-                      }}
-                      >
-                      Del
-                      </button>
-                    </td>
-                    </tr>
-                  ))
-                  )}
-                  <tr>
-                  <td colspan="7" style={{ textAlign: "right" }}>
-                    총합계 : {total.toLocaleString("ko-KR")}원
-                  </td>
-                  </tr>
-                </tbody>
-                </table>
-                <div className="text-end my-4">
-                <button
-                  className="btn"
-                  style={{ backgroundColor: 'red', color: 'white' }}
-                  onClick={() => {
-            navigate('/order');
+                      dispatch(removeItem(item.id));
+                    }}
+                  >
+                    Del
+                  </button>
+                </td>
+              </tr>
+            ))
+          )}
+          <tr>
+            <td colspan="7" style={{ textAlign: "right" }}>
+              총합계 : {total.toLocaleString("ko-KR")}원
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div className="text-end my-4">
+        <button
+          className="btn"
+          style={{ backgroundColor: "red", color: "white" }}
+          onClick={() => {
+            navigate("/order");
           }}
         >
           주문하기

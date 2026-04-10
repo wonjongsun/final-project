@@ -45,6 +45,9 @@ let cart = createSlice({
         state.splice(cartId,1);
       }
     },
+    removeAllItem() {
+      return [];      
+    },
   },
 })
 
@@ -55,4 +58,4 @@ export default configureStore({
   },
 });
 
-export let { addCount, removeCount, addItem, removeItem } = cart.actions;
+export let { addCount, removeCount, addItem, removeItem, removeAllItem } = cart.actions;

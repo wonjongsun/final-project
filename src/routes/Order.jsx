@@ -1,10 +1,12 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { removeAllItem } from "../Store";
 
 export default function Order() {
   let stateCart = useSelector((state) => state.carts);
   let navigate = useNavigate();
+  let dispatch = useDispatch();
 
   const total = useMemo(() => {
     return stateCart.reduce((acc, item) => acc + item.count * item.price, 0);
@@ -61,6 +63,7 @@ export default function Order() {
               className="btn btn-primary btn-lg w-100" 
               onClick={() => {
                 alert('주문이 완료되었습니다.');
+                dispatch(removeAllItem());
                 navigate('/orderHistory');
               }}
             >
